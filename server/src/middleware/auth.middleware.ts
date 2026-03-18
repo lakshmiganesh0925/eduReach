@@ -5,7 +5,7 @@ import type {JWTPayload} from "../utils/jwt.utils.ts";
 declare global{
     namespace Express{
         interface Request{
-            userId?:JWTPayload;
+            user?:JWTPayload;
         }
     }
 }
@@ -15,12 +15,13 @@ const authMiddleware = (req:Request,res:Response,next:NextFunction):void=>{
     const authHeader =req.headers.authorization;
 
     if(!authHeader || ! authHeader.startsWith('Bearer')){
-       res.json(401).json({success:false, message:"Access denied. No token provided"});
+       res.status(401).json({success:false, message:"Access denied. No token provided"});
        return ;
     }
     const token= authHeader.split(" ")[1];
     if(!token){
         res.status(401).json({success:false,message:"Access Denied .Token is empty."});
+        return;
     }
     const decoded  =verifyToken(token);
     req.user=decoded;
