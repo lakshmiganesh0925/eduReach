@@ -158,7 +158,11 @@ export const deptPlacements = [
   { dept: "CE", avg: "₹5.0 LPA", pct: 43 },
 ];
 
-
+// ---- VAPI FORM ----
+export const vapiFormContent = {
+  courses: ["B.Tech CSE", "B.Tech ECE", "B.Tech AI & DS", "B.Tech IT", "B.Tech ME", "B.Tech CE", "M.Tech CS", "M.Tech VLSI", "MBA"],
+  topics: ["Course Info", "Fees", "Admissions", "Scholarships", "Campus & Hostel", "Placements", "General"],
+};
 
 // ---- CONTACT ----
 export const contactInfo = {
